@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
@@ -8,6 +8,10 @@ cube_state = {
     "translation": {"x": 0, "y": 0, "z": 0},
     "scaling": {"x": 1, "y": 1, "z": 1}
 }
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/get_state')
 def get_state():
